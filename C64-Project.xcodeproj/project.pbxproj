@@ -1,0 +1,214 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA296A50153D266300CBAD61 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA296A4F153D266300CBAD61 /* main.c */; };
+		EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */ = {isa = PBXBuildFile; fileRef = EA29B7E4154111610068F526 /* SpriteHandler.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EA296A49153D266300CBAD61 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EA296A4B153D266300CBAD61 /* C64-Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "C64-Project"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA296A4F153D266300CBAD61 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		EA29B7E2154111490068F526 /* SpriteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteHandler.h; sourceTree = "<group>"; };
+		EA29B7E4154111610068F526 /* SpriteHandler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SpriteHandler.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA296A48153D266300CBAD61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA296A40153D266200CBAD61 = {
+			isa = PBXGroup;
+			children = (
+				EA296A4E153D266300CBAD61 /* C64-Project */,
+				EA296A4C153D266300CBAD61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA296A4C153D266300CBAD61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA296A4B153D266300CBAD61 /* C64-Project */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA296A4E153D266300CBAD61 /* C64-Project */ = {
+			isa = PBXGroup;
+			children = (
+				EA296A4F153D266300CBAD61 /* main.c */,
+				EA29B7E2154111490068F526 /* SpriteHandler.h */,
+				EA29B7E4154111610068F526 /* SpriteHandler.c */,
+			);
+			path = "C64-Project";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA296A4A153D266300CBAD61 /* C64-Project */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA296A55153D266300CBAD61 /* Build configuration list for PBXNativeTarget "C64-Project" */;
+			buildPhases = (
+				EA296A47153D266300CBAD61 /* Sources */,
+				EA296A48153D266300CBAD61 /* Frameworks */,
+				EA296A49153D266300CBAD61 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "C64-Project";
+			productName = "C64-Project";
+			productReference = EA296A4B153D266300CBAD61 /* C64-Project */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA296A42153D266300CBAD61 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Lightspeed Systems";
+			};
+			buildConfigurationList = EA296A45153D266300CBAD61 /* Build configuration list for PBXProject "C64-Project" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EA296A40153D266200CBAD61;
+			productRefGroup = EA296A4C153D266300CBAD61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA296A4A153D266300CBAD61 /* C64-Project */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA296A47153D266300CBAD61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA296A50153D266300CBAD61 /* main.c in Sources */,
+				EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EA296A53153D266300CBAD61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EA296A54153D266300CBAD61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EA296A56153D266300CBAD61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EA296A57153D266300CBAD61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA296A45153D266300CBAD61 /* Build configuration list for PBXProject "C64-Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA296A53153D266300CBAD61 /* Debug */,
+				EA296A54153D266300CBAD61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA296A55153D266300CBAD61 /* Build configuration list for PBXNativeTarget "C64-Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA296A56153D266300CBAD61 /* Debug */,
+				EA296A57153D266300CBAD61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA296A42153D266300CBAD61 /* Project object */;
+}
