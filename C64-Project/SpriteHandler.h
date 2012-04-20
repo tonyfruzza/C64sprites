@@ -2,27 +2,31 @@
 //  SpriteHandler.h
 //  C64-Project
 //
-//  Created by Tony Fruzza on 4/19/12.
-//  Copyright (c) 2012 Lightspeed Systems. All rights reserved.
-//
+/* Sprites are 24x21 with the option to double the size V or H
+ * 1 individual color, or a shared set of 2 colors
+ */
 
 #ifndef C64_Project_SpriteHandler_h
 #define C64_Project_SpriteHandler_h
 
 #define VMEM	0xD000
+typedef unsigned char u_int8_t;
+typedef unsigned int u_int16_t;
 
 
 typedef struct _SpriteHandler {
-    unsigned char id;
-    unsigned char *on, *doubleH, *doubleW, *color, *dataLocation, *dataPtr, *x, *y;
-    void (*initSpriteHandler)(struct _SpriteHandler *self, unsigned char SpriteNumber);
-    void (*setSpriteMemAddy)(struct _SpriteHandler *self, unsigned int spriteMemoryLocation);
-    void (*spriteMoveTo)(struct _SpriteHandler *self, unsigned int newx, unsigned char newy);
+    u_int8_t id;
+    u_int8_t *on, *doubleH, *doubleW, *color, *dataLocation, *dataPtr, *x, *y, *msb_forBigX,
+    *multiColorOn, *priorityBehind, *multiColor1, *multiColor2;
+    void (*initSpriteHandler)(struct _SpriteHandler *self, u_int8_t SpriteNumber);
+    void (*setSpriteMemAddy)(struct _SpriteHandler *self, u_int16_t spriteMemoryLocation);
+    void (*spriteMoveTo)(struct _SpriteHandler *self, unsigned int newx, u_int8_t newy);
+    void (*spriteOn)(struct _SpriteHandler *self, u_int8_t on);
 } SpriteHandler;
 
-void initSpriteHandler(SpriteHandler *sh, unsigned char SpriteNumber);
-void setSpriteMemAddy(SpriteHandler *sh, unsigned int spriteMemoryLocation);
-void spriteOn(SpriteHandler *sh, unsigned char on);
-void spriteMoveTo(SpriteHandler *sh, unsigned int newx, unsigned char newy);
+void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber);
+void setSpriteMemAddy(SpriteHandler *sh, u_int16_t spriteMemoryLocation);
+void spriteOn(SpriteHandler *sh, u_int8_t on);
+void spriteMoveTo(SpriteHandler *sh, u_int16_t newx, u_int8_t newy);
 
 #endif

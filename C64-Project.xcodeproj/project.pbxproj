@@ -28,6 +28,7 @@
 		EA296A4F153D266300CBAD61 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EA29B7E2154111490068F526 /* SpriteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteHandler.h; sourceTree = "<group>"; };
 		EA29B7E4154111610068F526 /* SpriteHandler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SpriteHandler.c; sourceTree = "<group>"; };
+		EA29B7F41541CA950068F526 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = "C64-Project/Makefile"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		EA296A40153D266200CBAD61 = {
 			isa = PBXGroup;
 			children = (
+				EA29B7F41541CA950068F526 /* Makefile */,
 				EA296A4E153D266300CBAD61 /* C64-Project */,
 				EA296A4C153D266300CBAD61 /* Products */,
 			);

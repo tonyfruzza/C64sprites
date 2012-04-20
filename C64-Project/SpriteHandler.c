@@ -2,9 +2,6 @@
 //  SpriteHandler.c
 //  C64-Project
 //
-//  Created by Tony Fruzza on 4/19/12.
-//  Copyright (c) 2012 Lightspeed Systems. All rights reserved.
-//
 
 #include "SpriteHandler.h"
 #include "stdio.h"
@@ -12,26 +9,31 @@
 void initSpriteHandler(SpriteHandler *sh, unsigned char SpriteNumber){
     sh->id              = SpriteNumber;
     printf("Initializing sprite %d\n", SpriteNumber);
-    sh->on             = VMEM + 21;
-    sh->doubleH        = VMEM + 23;
-    sh->doubleW        = VMEM + 28;
-    sh->color          = VMEM + (39 + SpriteNumber);
-    sh->dataLocation   = 2040;
-    sh->x              = VMEM + (1 * SpriteNumber);
-    sh->y              = VMEM + (1 * SpriteNumber) + 1;
+    sh->dataLocation   = 2040 + SpriteNumber;
+    sh->x              = VMEM + (1 * SpriteNumber); // Byte x possition, set MSB to go more than 255
+    sh->y              = VMEM + (1 * SpriteNumber) + 1; // Byte y possition
+    sh->msb_forBigX    = VMEM + 16; // Most Significant Bit flag
+    sh->on             = VMEM + 21; // Bit to turn sprite on/off
+    sh->doubleH        = VMEM + 23; // Bit to double height
+    sh->doubleW        = VMEM + 28; // Bit to double width
+    sh->multiColorOn   = VMEM + 28; // Bit to toggle multi color mode
+    sh->priorityBehind = VMEM + 27; // Bit to toggle background prioity
+    sh->multiColor1    = VMEM + 37; // Byte color 1 for all colored (shared)
+    sh->multiColor2    = VMEM + 38; // Byte color 2 for all colored (shared)
+    sh->color          = VMEM + (39 + SpriteNumber); // Byte color for this sprite
     
     // Init values
     //*sh->on             &= ~0x01; // Turn it off
-    *sh->on             |= 0x01; // Turn it on
+    *sh->on             |= 0x01; // Turn this spite on
     *sh->x              = 200;
     *sh->y              = 200;
     *sh->color          = 0; // black
-    sh->setSpriteMemAddy = setSpriteMemAddy;
+    sh->setSpriteMemAddy= setSpriteMemAddy;
     sh->spriteMoveTo    = spriteMoveTo;
-    
+
 }
 
-void setSpriteMemAddy(SpriteHandler *sh, unsigned int spriteMemoryLocation){
+void setSpriteMemAddy(SpriteHandler *sh, u_int16_t spriteMemoryLocation){
     printf("Setting sprite address to %x\n", spriteMemoryLocation);
     *sh->dataLocation   = spriteMemoryLocation/64; // Set value
     sh->dataPtr         = spriteMemoryLocation; // Set address

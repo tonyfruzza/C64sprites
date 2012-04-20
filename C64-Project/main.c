@@ -1,16 +1,10 @@
 //
-//  main.c
-//  C64-Project
-//
-//  Created by Tony Fruzza on 4/16/12.
-//  Copyright (c) 2012 Lightspeed Systems. All rights reserved.
+// This for testing of a C64 Sprite lib compileable with cc65
+// The Makefile needs work.
 //
 
 #include "stdio.h"
 #include "stdlib.h"
-#include "c64.h"
-#include "conio.h"
-#include "stdbool.h"
 #include "SpriteHandler.h"
 
 
@@ -33,8 +27,9 @@ static const char butterfly[63] = {
 };
 
 int main(void){
-    int i;
-    unsigned char c;
+    
+    u_int16_t i;
+    u_int8_t *c, y;
     SpriteHandler sh0;
     sh0.initSpriteHandler = initSpriteHandler;
     sh0.initSpriteHandler(&sh0, 0);
@@ -42,24 +37,37 @@ int main(void){
     for(i=0;i<63;++i){
         sh0.dataPtr[i] = butterfly[i];
     }
-    while((c=getchar()) != EOF){
-        switch (c) {
-            case 0x4c:
-            case 0x9d:
+    
+    c = 0x00C5; // Last key pressed
+    while(1){
+        for(y=0;y<256;++y){
+            *sh0.y = y;
+        }
+    }
+/*
+    while(1){
+        curKey = *c;
+        if(lastKey == curKey){
+            continue;
+        }
+        switch (curKey) {
+            case 0x02:
                 // Left
                 --*sh0.x;
                 break;
-            case 0x91:
+            case 0x07:
                 // up
                 --*sh0.y;
-            case 0xd1:
+            case 0x3e:
                 // 'Q' exit
                 printf("Exiting\n");
                 return(0);
             default:
-                printf("Key: %x\n", c);
+                printf("KEY %x\n", curKey);
         }
+        lastKey = curKey;
     }
+ */
     return 0;
 }
 
