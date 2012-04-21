@@ -33,6 +33,7 @@ static const char preComputedPathY[63] = {
 };
 
 int main(void){
+    char xMovements;
     u_int8_t y, count;
     SpriteHandler sh[8];
     for(count=0;count<8;++count){
@@ -40,17 +41,20 @@ int main(void){
         sh[count].init(&sh[count], count);
         sh[count].setMemAddy(&sh[count], SPRITE0_ADDY);
         sh[count].setSolidColor(&sh[count], count);
-    }    
+    }
     
     for(count=0;count<63;++count){
         // They're all pointing at the same mem addy
         sh[0].dataPtr[count] = butterfly[count];
     }
+    xMovements = 0;
     while(1){
+        if(xMovements<100){
+            xMovements+=2;
+        }
         for(y=0;y<63;++y){
             for(count=0;count<8;++count){
-                *sh[count].x = preComputedPathX[(y + (count*8))%63];
-                *sh[count].y = preComputedPathY[(y + (count*8))%63];
+                sh[count].MoveTo(&sh[count], preComputedPathX[(y + (count*8))%63] + xMovements, preComputedPathY[(y + (count*8))%63]);
             }
         }
     }

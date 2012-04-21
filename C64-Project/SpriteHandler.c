@@ -6,7 +6,7 @@
 #include "SpriteHandler.h"
 #include "stdio.h"
 
-void initSpriteHandler(SpriteHandler *sh, unsigned char SpriteNumber){
+void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber){
     sh->id              = SpriteNumber;
     printf("Initializing sprite %d\n", SpriteNumber);
     sh->dataLocation   = 2040 + SpriteNumber;
@@ -24,22 +24,24 @@ void initSpriteHandler(SpriteHandler *sh, unsigned char SpriteNumber){
     
     // Init values
     *sh->on             |= (1 << SpriteNumber); // Turn this spite on
-    *sh->x              = 200;
-    *sh->y              = 200;
+    *sh->x              = 0; // hidden
+    *sh->y              = 0; // hidden
     *sh->color          = 0; // black
     // Init Methods
     sh->setMemAddy      = setSpriteMemAddy;
     sh->MoveTo          = spriteMoveTo;
     sh->setSolidColor   = setSpriteSolidColor;
+    sh->setMultiColorOn = setSpriteMultiColorOn;
+    sh->setSharedMultiColors = setSpriteSharedMultiColors;
 }
 
 void setSpriteMemAddy(SpriteHandler *sh, u_int16_t spriteMemoryLocation){
     printf("Setting sprite address to %x\n", spriteMemoryLocation);
     *sh->dataLocation   = spriteMemoryLocation/64; // Set value
-    sh->dataPtr         = spriteMemoryLocation; // Set address
+    sh->dataPtr         = (u_int8_t *)spriteMemoryLocation; // Set address
 }
 
-void spriteOn(SpriteHandler *sh, unsigned char on){
+void spriteOn(SpriteHandler *sh, u_int8_t on){
     if(on){
         *sh->on        |= (1 << sh->id);
     }else{
@@ -48,12 +50,33 @@ void spriteOn(SpriteHandler *sh, unsigned char on){
     }
 }
 
-void spriteMoveTo(SpriteHandler *sh, unsigned int newx, unsigned char newy){
-    *sh->x                = newx; // Do work to handle wrap around
+void spriteMoveTo(SpriteHandler *sh, u_int16_t newx, u_int8_t newy){
+    if(newx>255){
+        // Set MSB for right x
+        *sh->msb_forBigX |= (1 << sh->id);
+        *sh->x            = newx-255;
+    }else{
+        *sh->msb_forBigX &= ~(1 << sh->id);
+        *sh->x            = newx;
+    }
+
     *sh->y                = newy;
 }
 
 void setSpriteSolidColor(SpriteHandler *sh, u_int8_t color){
     // Whole sprite color colors 0-15
     *sh->color            = color;
+}
+
+void setSpriteMultiColorOn(SpriteHandler *sh, u_int8_t on){
+    if(on){
+        *sh->multiColorOn|= (1 << sh->id);
+    }else{
+        *sh->multiColorOn&= ~(1 << sh->id);
+    }
+}
+
+void setSpriteSharedMultiColors(SpriteHandler *sh, u_int8_t color1, u_int8_t color2){
+    *sh->multiColor1    = color1;
+    *sh->multiColor2    = color2;
 }
