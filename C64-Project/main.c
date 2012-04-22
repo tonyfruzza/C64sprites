@@ -52,7 +52,7 @@ int main(void){
         if(xMovements<100){
             xMovements+=2;
         }
-        for(y=0;y<63;++y){
+        for(y=63;--y;){
             for(count=0;count<8;++count){
                 sh[count].MoveTo(&sh[count], preComputedPathX[(y + (count*8))%63] + xMovements, preComputedPathY[(y + (count*8))%63]);
             }

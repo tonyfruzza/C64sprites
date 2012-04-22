@@ -15,9 +15,11 @@ void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber){
     sh->msb_forBigX    = VMEM + 16; // Most Significant Bit flag
     sh->on             = VMEM + 21; // Bit to turn sprite on/off
     sh->doubleH        = VMEM + 23; // Bit to double height
-    sh->doubleW        = VMEM + 28; // Bit to double width
-    sh->multiColorOn   = VMEM + 28; // Bit to toggle multi color mode
     sh->priorityBehind = VMEM + 27; // Bit to toggle background prioity
+    sh->multiColorOn   = VMEM + 28; // Bit to toggle multi color mode
+    sh->doubleW        = VMEM + 29; // Bit to double width
+    sh->collision      = VMEM + 30; // Bit to read if collision detected
+    sh->collisionBack  = VMEM + 31; // Bit to read if collision with background is detected
     sh->multiColor1    = VMEM + 37; // Byte color 1 for all colored (shared)
     sh->multiColor2    = VMEM + 38; // Byte color 2 for all colored (shared)
     sh->color          = VMEM + (39 + SpriteNumber); // Byte color for this sprite
@@ -32,7 +34,9 @@ void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber){
     sh->MoveTo          = spriteMoveTo;
     sh->setSolidColor   = setSpriteSolidColor;
     sh->setMultiColorOn = setSpriteMultiColorOn;
-    sh->setSharedMultiColors = setSpriteSharedMultiColors;
+    sh->getCollision    = getSpriteCollision;
+    sh->setSharedMultiColors    = setSpriteSharedMultiColors;
+    sh->setDoubleWidthHeight    = setSpriteDoubleWidthHeight;
 }
 
 void setSpriteMemAddy(SpriteHandler *sh, u_int16_t spriteMemoryLocation){
@@ -77,6 +81,24 @@ void setSpriteMultiColorOn(SpriteHandler *sh, u_int8_t on){
 }
 
 void setSpriteSharedMultiColors(SpriteHandler *sh, u_int8_t color1, u_int8_t color2){
-    *sh->multiColor1    = color1;
-    *sh->multiColor2    = color2;
+    *sh->multiColor1        = color1;
+    *sh->multiColor2        = color2;
 }
+
+u_int8_t getSpriteCollision(SpriteHandler *sh){
+    return(*sh->collision ^ 1 << sh->id);
+}
+
+void setSpriteDoubleWidthHeight(SpriteHandler *sh, u_int8_t xOn, u_int8_t yOn){
+    if(xOn){
+        *sh->doubleW        |= (1 << sh->id);
+    }else{
+        *sh->doubleW        &= ~(1 << sh->id);
+    }
+    if(yOn){
+        *sh->doubleH        |= (1 << sh->id);
+    }else{
+        *sh->doubleH        &= ~(1 << sh->id);
+    }
+}
+
