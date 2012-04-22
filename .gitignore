@@ -1,1 +1,5 @@
 xcuserdata
+C64-Project/bin/spriteTest
+C64-Project/gfx.o
+C64-Project/main.o
+C64-Project/SpriteHandler.o
