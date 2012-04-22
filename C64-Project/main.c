@@ -7,7 +7,6 @@
 #include "stdlib.h"
 #include "SpriteHandler.h"
 
-#define BORDER          0xD020
 #define SPRITE0_ADDY    0x3000
 
 static const char butterfly[63] = { 
@@ -47,6 +46,9 @@ int main(void){
         // They're all pointing at the same mem addy
         sh[0].dataPtr[count] = butterfly[count];
     }
+    setBackGroundColor(COLOR_GREY);
+    setBoarderColor(COLOR_GREY);
+    clearScreen();
     xMovements = 0;
     while(1){
         if(xMovements<100){

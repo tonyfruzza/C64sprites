@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA296A50153D266300CBAD61 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA296A4F153D266300CBAD61 /* main.c */; };
 		EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */ = {isa = PBXBuildFile; fileRef = EA29B7E4154111610068F526 /* SpriteHandler.c */; };
+		EAB47D181543E11800516343 /* gfx.c in Sources */ = {isa = PBXBuildFile; fileRef = EAB47D171543E11800516343 /* gfx.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,8 @@
 		EA29B7E2154111490068F526 /* SpriteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteHandler.h; sourceTree = "<group>"; };
 		EA29B7E4154111610068F526 /* SpriteHandler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SpriteHandler.c; sourceTree = "<group>"; };
 		EA29B7F41541CA950068F526 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = "C64-Project/Makefile"; sourceTree = "<group>"; };
+		EAB47D171543E11800516343 /* gfx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gfx.c; sourceTree = "<group>"; };
+		EAB47D191543E12800516343 /* gfx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gfx.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				EA296A4F153D266300CBAD61 /* main.c */,
 				EA29B7E2154111490068F526 /* SpriteHandler.h */,
 				EA29B7E4154111610068F526 /* SpriteHandler.c */,
+				EAB47D171543E11800516343 /* gfx.c */,
+				EAB47D191543E12800516343 /* gfx.h */,
 			);
 			path = "C64-Project";
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			files = (
 				EA296A50153D266300CBAD61 /* main.c in Sources */,
 				EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */,
+				EAB47D181543E11800516343 /* gfx.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
