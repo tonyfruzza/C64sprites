@@ -17,7 +17,7 @@ typedef struct _SpriteHandler {
     *multiColorOn, *priorityBehind, *multiColor1, *multiColor2, *collision, *collisionBack;
     void (*init)(struct _SpriteHandler *self, u_int8_t SpriteNumber);
     void (*setMemAddy)(struct _SpriteHandler *self, u_int16_t spriteMemoryLocation);
-    void (*MoveTo)(struct _SpriteHandler *self, unsigned int newx, u_int8_t newy);
+    void (*MoveTo)(struct _SpriteHandler *self, u_int16_t newx, u_int8_t newy);
     void (*setOn)(struct _SpriteHandler *self, u_int8_t on);
     void (*setSolidColor)(struct _SpriteHandler *self, u_int8_t color);
     void (*setMultiColorOn)(struct _SpriteHandler *self, u_int8_t on);
@@ -28,7 +28,7 @@ typedef struct _SpriteHandler {
 
 void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber);
 void setSpriteMemAddy(SpriteHandler *sh, u_int16_t spriteMemoryLocation);
-void spriteOn(SpriteHandler *sh, u_int8_t on);
+void setSpriteOn(SpriteHandler *sh, u_int8_t on);
 void spriteMoveTo(SpriteHandler *sh, u_int16_t newx, u_int8_t newy);
 void setSpriteSolidColor(SpriteHandler *sh, u_int8_t color);
 void setSpriteMultiColorOn(SpriteHandler *sh, u_int8_t on);

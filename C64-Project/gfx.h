@@ -8,6 +8,12 @@
 
 typedef unsigned char u_int8_t;
 typedef unsigned int u_int16_t;
+#ifndef TRUE
+#define TRUE 0x01
+#endif
+#ifndef FALSE
+#define FLASE 0x00
+#endif
 
 #define BORDER_COLOR        0xD020
 #define SCREEN_BG_COLOR     0xD021

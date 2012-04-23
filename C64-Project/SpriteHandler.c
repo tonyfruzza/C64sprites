@@ -4,28 +4,27 @@
 //
 
 #include "SpriteHandler.h"
-#include "stdio.h"
+#include <stdio.h>
 
 void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber){
     sh->id              = SpriteNumber;
-    printf("Initializing sprite %d\n", SpriteNumber);
-    sh->dataLocation   = 2040 + SpriteNumber;
-    sh->x              = VMEM + (2 * SpriteNumber); // Byte x possition, set MSB to go more than 255
-    sh->y              = VMEM + (2 * SpriteNumber) + 1; // Byte y possition
-    sh->msb_forBigX    = VMEM + 16; // Most Significant Bit flag
-    sh->on             = VMEM + 21; // Bit to turn sprite on/off
-    sh->doubleH        = VMEM + 23; // Bit to double height
-    sh->priorityBehind = VMEM + 27; // Bit to toggle background prioity
-    sh->multiColorOn   = VMEM + 28; // Bit to toggle multi color mode
-    sh->doubleW        = VMEM + 29; // Bit to double width
-    sh->collision      = VMEM + 30; // Bit to read if collision detected
-    sh->collisionBack  = VMEM + 31; // Bit to read if collision with background is detected
-    sh->multiColor1    = VMEM + 37; // Byte color 1 for all colored (shared)
-    sh->multiColor2    = VMEM + 38; // Byte color 2 for all colored (shared)
-    sh->color          = VMEM + (39 + SpriteNumber); // Byte color for this sprite
+    sh->dataLocation    = (u_int8_t *) (2040 + SpriteNumber);
+    sh->x               = (u_int8_t *) (VMEM + (2 * SpriteNumber)); // Byte x possition, set MSB to go more than 255
+    sh->y               = (u_int8_t *) (VMEM + (2 * SpriteNumber) + 1); // Byte y possition
+    sh->msb_forBigX     = (u_int8_t *) (VMEM + 16); // Most Significant Bit flag
+    sh->on              = (u_int8_t *) (VMEM + 21); // Bit to turn sprite on/off
+    sh->doubleH         = (u_int8_t *) (VMEM + 23); // Bit to double height
+    sh->priorityBehind  = (u_int8_t *) (VMEM + 27); // Bit to toggle background prioity
+    sh->multiColorOn    = (u_int8_t *) (VMEM + 28); // Bit to toggle multi color mode
+    sh->doubleW         = (u_int8_t *) (VMEM + 29); // Bit to double width
+    sh->collision       = (u_int8_t *) (VMEM + 30); // Bit to read if collision detected
+    sh->collisionBack   = (u_int8_t *) (VMEM + 31); // Bit to read if collision with background is detected
+    sh->multiColor1     = (u_int8_t *) (VMEM + 37); // Byte color 1 for all colored (shared)
+    sh->multiColor2     = (u_int8_t *) (VMEM + 38); // Byte color 2 for all colored (shared)
+    sh->color           = (u_int8_t *) (VMEM + (39 + SpriteNumber)); // Byte color for this sprite
     
     // Init values
-    *sh->on             |= (1 << SpriteNumber); // Turn this spite on
+    *sh->on            |= (1 << SpriteNumber); // Turn this spite on
     *sh->x              = 0; // hidden
     *sh->y              = 0; // hidden
     *sh->color          = 0; // black
@@ -35,17 +34,17 @@ void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber){
     sh->setSolidColor   = setSpriteSolidColor;
     sh->setMultiColorOn = setSpriteMultiColorOn;
     sh->getCollision    = getSpriteCollision;
+    sh->setOn           = setSpriteOn;
     sh->setSharedMultiColors    = setSpriteSharedMultiColors;
     sh->setDoubleWidthHeight    = setSpriteDoubleWidthHeight;
 }
 
 void setSpriteMemAddy(SpriteHandler *sh, u_int16_t spriteMemoryLocation){
-    printf("Setting sprite address to %x\n", spriteMemoryLocation);
     *sh->dataLocation   = spriteMemoryLocation/64; // Set value
     sh->dataPtr         = (u_int8_t *)spriteMemoryLocation; // Set address
 }
 
-void spriteOn(SpriteHandler *sh, u_int8_t on){
+void setSpriteOn(SpriteHandler *sh, u_int8_t on){
     if(on){
         *sh->on        |= (1 << sh->id);
     }else{

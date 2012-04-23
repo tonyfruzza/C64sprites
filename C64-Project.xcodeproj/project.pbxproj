@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA296A50153D266300CBAD61 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA296A4F153D266300CBAD61 /* main.c */; };
 		EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */ = {isa = PBXBuildFile; fileRef = EA29B7E4154111610068F526 /* SpriteHandler.c */; };
+		EA66012E1544B91A0083CE31 /* spriteBullet.c in Sources */ = {isa = PBXBuildFile; fileRef = EA66012D1544B91A0083CE31 /* spriteBullet.c */; };
 		EAB47D181543E11800516343 /* gfx.c in Sources */ = {isa = PBXBuildFile; fileRef = EAB47D171543E11800516343 /* gfx.c */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,9 @@
 		EA29B7E2154111490068F526 /* SpriteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteHandler.h; sourceTree = "<group>"; };
 		EA29B7E4154111610068F526 /* SpriteHandler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SpriteHandler.c; sourceTree = "<group>"; };
 		EA29B7F41541CA950068F526 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = "C64-Project/Makefile"; sourceTree = "<group>"; };
+		EA66012A1544B6030083CE31 /* spriteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spriteData.h; sourceTree = "<group>"; };
+		EA66012C1544B9070083CE31 /* spriteBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spriteBullet.h; sourceTree = "<group>"; };
+		EA66012D1544B91A0083CE31 /* spriteBullet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = spriteBullet.c; sourceTree = "<group>"; };
 		EAB47D171543E11800516343 /* gfx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gfx.c; sourceTree = "<group>"; };
 		EAB47D191543E12800516343 /* gfx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gfx.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,10 +70,13 @@
 			isa = PBXGroup;
 			children = (
 				EA296A4F153D266300CBAD61 /* main.c */,
+				EA66012A1544B6030083CE31 /* spriteData.h */,
 				EA29B7E2154111490068F526 /* SpriteHandler.h */,
 				EA29B7E4154111610068F526 /* SpriteHandler.c */,
-				EAB47D171543E11800516343 /* gfx.c */,
+				EA66012C1544B9070083CE31 /* spriteBullet.h */,
+				EA66012D1544B91A0083CE31 /* spriteBullet.c */,
 				EAB47D191543E12800516343 /* gfx.h */,
+				EAB47D171543E11800516343 /* gfx.c */,
 			);
 			path = "C64-Project";
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 				EA296A50153D266300CBAD61 /* main.c in Sources */,
 				EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */,
 				EAB47D181543E11800516343 /* gfx.c in Sources */,
+				EA66012E1544B91A0083CE31 /* spriteBullet.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
