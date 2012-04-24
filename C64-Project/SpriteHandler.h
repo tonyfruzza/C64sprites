@@ -24,6 +24,7 @@ typedef struct _SpriteHandler {
     void (*setSharedMultiColors)(struct _SpriteHandler *self, u_int8_t color1, u_int8_t color2);
     void (*setDoubleWidthHeight)(struct _SpriteHandler *self, u_int8_t xOn, u_int8_t yOn);
     u_int8_t (*getCollision)(struct _SpriteHandler *self);
+    u_int8_t (*getIsActive)(struct _SpriteHandler *self);
 } SpriteHandler;
 
 void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber);
@@ -35,5 +36,6 @@ void setSpriteMultiColorOn(SpriteHandler *sh, u_int8_t on);
 void setSpriteSharedMultiColors(SpriteHandler *sh, u_int8_t color1, u_int8_t color2);
 void setSpriteDoubleWidthHeight(SpriteHandler *sh, u_int8_t xOn, u_int8_t yOn);
 u_int8_t getSpriteCollision(SpriteHandler *sh);
+u_int8_t getSpriteIsActive(SpriteHandler *sh);
 
 #endif

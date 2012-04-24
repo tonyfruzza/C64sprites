@@ -11,6 +11,7 @@
 
 #define BULLET_VISBLE 0x01
 #define BULLET_ACTIVE 0x02
+//#define COLLISION_IGNORE_LIST   0x03
 
 typedef u_int8_t bulletFlag;
 
@@ -20,13 +21,13 @@ typedef struct _spriteBullet {
     void (*init)(struct _spriteBullet *self, u_int8_t spriteNumber);
     void (*doMovement)(struct _spriteBullet *self);
     void (*fireFrom)(struct _spriteBullet *self, u_int16_t x, u_int8_t y);
-    u_int8_t (*getIsHit)(struct _spriteBullet *self);
+    void (*doHit)(struct _spriteBullet *self);
     
 } spriteBullet;
 
 void initBullet(spriteBullet *sb, u_int8_t spriteNumber);
 void bulletDoMovement(spriteBullet *sb);
 void bulletFireFrom(spriteBullet *sb, u_int16_t x, u_int8_t y);
-u_int8_t bulletGetIsHit(spriteBullet *sb);
+void bulletDoHit(spriteBullet *sb);
 
 #endif

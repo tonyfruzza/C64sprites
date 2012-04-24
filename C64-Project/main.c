@@ -66,6 +66,17 @@ int main(void){
                 // Move butter flies
             }
         }
+        // see if they are all killed
+        if(!(sh[2].getIsActive(&sh[2]) || 
+             sh[3].getIsActive(&sh[3]) || 
+             sh[4].getIsActive(&sh[4]) || 
+             sh[5].getIsActive(&sh[5]) || 
+             sh[6].getIsActive(&sh[6]) || 
+             sh[7].getIsActive(&sh[7])
+             )){
+            printf("GAME OVER");
+            return(0);
+        }
     }
     return 0;
 }

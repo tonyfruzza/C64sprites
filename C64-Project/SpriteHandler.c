@@ -4,7 +4,6 @@
 //
 
 #include "SpriteHandler.h"
-#include <stdio.h>
 
 void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber){
     sh->id              = SpriteNumber;
@@ -35,6 +34,7 @@ void initSpriteHandler(SpriteHandler *sh, u_int8_t SpriteNumber){
     sh->setMultiColorOn = setSpriteMultiColorOn;
     sh->getCollision    = getSpriteCollision;
     sh->setOn           = setSpriteOn;
+    sh->getIsActive     = getSpriteIsActive;
     sh->setSharedMultiColors    = setSpriteSharedMultiColors;
     sh->setDoubleWidthHeight    = setSpriteDoubleWidthHeight;
 }
@@ -99,5 +99,9 @@ void setSpriteDoubleWidthHeight(SpriteHandler *sh, u_int8_t xOn, u_int8_t yOn){
     }else{
         *sh->doubleH        &= ~(1 << sh->id);
     }
+}
+
+u_int8_t getSpriteIsActive(SpriteHandler *sh){
+    return(*sh->on & (1 << sh->id));
 }
 

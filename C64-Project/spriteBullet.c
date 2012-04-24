@@ -3,8 +3,6 @@
 //  C64-Project
 //
 #include "spriteBullet.h"
-#include "stdio.h"
-#include <stdlib.h>
 
 void initBullet(spriteBullet *sb, u_int8_t spriteNumber){
     u_int8_t i;
@@ -16,7 +14,7 @@ void initBullet(spriteBullet *sb, u_int8_t spriteNumber){
     // Init methods
     sb->doMovement  = bulletDoMovement;
     sb->fireFrom    = bulletFireFrom;
-    sb->getIsHit    = bulletGetIsHit;
+    sb->doHit       = bulletDoHit;
 
     // Copy in bullet sprite data, could probably be programically generated?
     for(i=63;i--;){
@@ -25,7 +23,6 @@ void initBullet(spriteBullet *sb, u_int8_t spriteNumber){
 }
 
 void bulletDoMovement(spriteBullet *sb){
-    u_int8_t hitSprite, *spriteOnOffByte = (u_int8_t *) (VMEM + 21);
     if(!(sb->flags |= BULLET_ACTIVE)){
         return;
     }
@@ -34,9 +31,7 @@ void bulletDoMovement(spriteBullet *sb){
         // It hit the top of the screen
         sb->flags &= ~ (BULLET_ACTIVE | BULLET_VISBLE);
     }
-    if((hitSprite = sb->getIsHit(sb))){
-        *spriteOnOffByte &= ~hitSprite;
-    }
+    sb->doHit(sb);
 }
 
 void bulletFireFrom(spriteBullet *sb, u_int16_t x, u_int8_t y){
@@ -44,14 +39,15 @@ void bulletFireFrom(spriteBullet *sb, u_int16_t x, u_int8_t y){
     sb->sh.MoveTo(&sb->sh, x, y);
 }
 
-u_int8_t bulletGetIsHit(spriteBullet *sb){
+void bulletDoHit(spriteBullet *sb){
+    u_int8_t *spriteOnOffByte = (u_int8_t *) (VMEM + 21);
     u_int8_t hit = (sb->sh.getCollision(&sb->sh) & 0xFC); // Ignore collitions between 0 and 1 (ship/bullet)
     if(!(sb->flags & BULLET_ACTIVE)){
-        return(0);
+        return;
     }
     if(hit){
         // restart bullet
         sb->flags &= ~(BULLET_ACTIVE | BULLET_VISBLE);
+        *spriteOnOffByte &= ~ (hit>128?0:hit); // do action to target
     }
-    return(hit>8?0:hit);
  }
