@@ -8,7 +8,7 @@
 
 #ifndef C64_Project_SpriteHandler_h
 #define C64_Project_SpriteHandler_h
-#include "gfx.h"
+#include "types.h"
 #define VMEM                0xD000
 
 typedef struct _SpriteHandler {

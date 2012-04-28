@@ -11,6 +11,7 @@
 		EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */ = {isa = PBXBuildFile; fileRef = EA29B7E4154111610068F526 /* SpriteHandler.c */; };
 		EA66012E1544B91A0083CE31 /* spriteBullet.c in Sources */ = {isa = PBXBuildFile; fileRef = EA66012D1544B91A0083CE31 /* spriteBullet.c */; };
 		EAB47D181543E11800516343 /* gfx.c in Sources */ = {isa = PBXBuildFile; fileRef = EAB47D171543E11800516343 /* gfx.c */; };
+		EAB47D8B154B8FA800516343 /* SidHandler.c in Sources */ = {isa = PBXBuildFile; fileRef = EAB47D8A154B8FA800516343 /* SidHandler.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +37,9 @@
 		EA66012D1544B91A0083CE31 /* spriteBullet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = spriteBullet.c; sourceTree = "<group>"; };
 		EAB47D171543E11800516343 /* gfx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gfx.c; sourceTree = "<group>"; };
 		EAB47D191543E12800516343 /* gfx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gfx.h; sourceTree = "<group>"; };
+		EAB47D8A154B8FA800516343 /* SidHandler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SidHandler.c; sourceTree = "<group>"; };
+		EAB47D8F154B980F00516343 /* SidHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SidHandler.h; sourceTree = "<group>"; };
+		EAB47D90154B980F00516343 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,9 @@
 				EA66012D1544B91A0083CE31 /* spriteBullet.c */,
 				EAB47D191543E12800516343 /* gfx.h */,
 				EAB47D171543E11800516343 /* gfx.c */,
+				EAB47D8F154B980F00516343 /* SidHandler.h */,
+				EAB47D8A154B8FA800516343 /* SidHandler.c */,
+				EAB47D90154B980F00516343 /* types.h */,
 			);
 			path = "C64-Project";
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 				EA29B7E5154111610068F526 /* SpriteHandler.c in Sources */,
 				EAB47D181543E11800516343 /* gfx.c in Sources */,
 				EA66012E1544B91A0083CE31 /* spriteBullet.c in Sources */,
+				EAB47D8B154B8FA800516343 /* SidHandler.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

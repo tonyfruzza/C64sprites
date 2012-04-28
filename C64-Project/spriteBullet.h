@@ -8,6 +8,7 @@
 
 #include "SpriteHandler.c"
 #include "spriteData.h"
+#include "SidHandler.h"
 
 #define BULLET_VISBLE 0x01
 #define BULLET_ACTIVE 0x02
@@ -18,10 +19,13 @@ typedef u_int8_t bulletFlag;
 typedef struct _spriteBullet {
     SpriteHandler sh;
     bulletFlag flags;
+    SidHandler sid;
+
     void (*init)(struct _spriteBullet *self, u_int8_t spriteNumber);
     void (*doMovement)(struct _spriteBullet *self);
     void (*fireFrom)(struct _spriteBullet *self, u_int16_t x, u_int8_t y);
     void (*doHit)(struct _spriteBullet *self);
+    void (*setOn)(struct _spriteBullet *self, u_int8_t toggle);
     
 } spriteBullet;
 
@@ -29,5 +33,6 @@ void initBullet(spriteBullet *sb, u_int8_t spriteNumber);
 void bulletDoMovement(spriteBullet *sb);
 void bulletFireFrom(spriteBullet *sb, u_int16_t x, u_int8_t y);
 void bulletDoHit(spriteBullet *sb);
+void bulletOn(spriteBullet *sb, u_int8_t toggle);
 
 #endif

@@ -3,11 +3,11 @@
 // The Makefile needs work.
 //
 
-#include "stdio.h"
-#include "stdlib.h"
+//#include "stdlib.h"
 #include "SpriteHandler.h"
 #include "spriteData.h"
 #include "spriteBullet.h"
+#include "gfx.h"
 
 static const char preComputedPathX[63] = {
     170, 170, 169, 167, 165, 163, 160, 156, 152, 147, 142, 137, 132, 126, 120, 114, 108, 102, 96, 91, 85, 80, 75, 70, 66, 62, 59, 56, 53, 52, 51, 50, 50, 51, 52, 54, 56, 59, 63, 66, 71, 76, 81, 86, 92, 97, 103, 109, 115, 121, 127, 133, 138, 143, 148, 153, 157, 160, 163, 166, 168, 169, 170
@@ -55,7 +55,9 @@ int main(void){
     while(1){
         for(y=63;--y;){
             for(count=2;count<8;++count){
-                sh[count].MoveTo(&sh[count], preComputedPathX[(y + (count*10))%63], preComputedPathY[(y + (count*10))%63]);
+                sh[count].MoveTo(&sh[count],
+                                 preComputedPathX[(y + (count*10))%63],
+                                 preComputedPathY[(y + (count*10))%63]);
                 if(!(sb.flags & BULLET_ACTIVE)){
                     sb.fireFrom(&sb, *sh[0].x, *sh[0].y);
                 }
@@ -74,8 +76,14 @@ int main(void){
              sh[6].getIsActive(&sh[6]) || 
              sh[7].getIsActive(&sh[7])
              )){
-            printf("GAME OVER");
+            sb.setOn(&sb, FLASE);
+            sh[0].setOn(&sh[0], FLASE);
+            clearScreen();
+            setBackGroundColor(COLOR_BLUE);
+            setBoarderColor(COLOR_LIGHT_BLUE);
+            
             return(0);
+            // Turn off space ship and bullet
         }
     }
     return 0;

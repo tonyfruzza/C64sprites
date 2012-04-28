@@ -15,11 +15,19 @@ void initBullet(spriteBullet *sb, u_int8_t spriteNumber){
     sb->doMovement  = bulletDoMovement;
     sb->fireFrom    = bulletFireFrom;
     sb->doHit       = bulletDoHit;
+    sb->setOn       = bulletOn;
 
     // Copy in bullet sprite data, could probably be programically generated?
     for(i=63;i--;){
         sb->sh.dataPtr[i] = bullets[i];
     }
+    
+    // Init the sound for bullet
+    sb->sid.init = initSidHandler;
+    sb->sid.init(&sb->sid);
+    sb->sid.setVolume(&sb->sid, 0xff);
+    sb->sid.setInstrument(&sb->sid, SID_INSTRUMENT_PIANO);
+
 }
 
 void bulletDoMovement(spriteBullet *sb){
@@ -37,6 +45,8 @@ void bulletDoMovement(spriteBullet *sb){
 void bulletFireFrom(spriteBullet *sb, u_int16_t x, u_int8_t y){
     sb->flags |= (BULLET_ACTIVE | BULLET_VISBLE);
     sb->sh.MoveTo(&sb->sh, x, y);
+    // Generate a sound
+    sb->sid.playSingleNote(&sb->sid, 60);
 }
 
 void bulletDoHit(spriteBullet *sb){
@@ -51,3 +61,12 @@ void bulletDoHit(spriteBullet *sb){
         *spriteOnOffByte &= ~ (hit>128?0:hit); // do action to target
     }
  }
+
+void bulletOn(spriteBullet *sb, u_int8_t toggle){
+    if(toggle){
+        sb->flags |= (BULLET_ACTIVE | BULLET_VISBLE);
+    }else{
+        sb->flags &= ~(BULLET_ACTIVE | BULLET_VISBLE);
+    }
+    sb->sh.setOn(&sb->sh, toggle);
+}
